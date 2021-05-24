@@ -1,0 +1,43 @@
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.miniDiv {
+    display: flex;
+    flex-flow: row;
+    margin-top: 2%;
+}
+
+.headerLabel {
+    margin-left: 5px;
+    font-size: 22px;
+}
+
+.searchBarInput {
+    border: 1px solid #E1E4E8;
+    height: 35px;
+    border-radius: 5px;
+    padding-left: 15px;
+    width: 85%;
+}
+
+.searchBarInput::placeholder {
+    font-size: 15px;
+}
+
+.searchButton {
+    margin-left: 10px;
+    background: #FAFBFC;
+    border: 1px solid #D9DBDB;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.proTips {
+    font-size: 14px;
+}

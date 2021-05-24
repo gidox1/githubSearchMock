@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    flex-flow: row;
+}
+
+.aTags {
+    font-size: 12px;
+    margin: auto 15px;
+}
