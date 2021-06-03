@@ -1,1 +1,1 @@
-This is a project clone of Github Search
+This is a project mock of Github Search
