@@ -40,8 +40,10 @@ const SearchBarContainer: React.FC<any> = () => {
           Search more than <b>227M</b> repositories
         </p>
       </div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div
+          className={styles.barDiv}
+        >
           <input
             className={styles.searchBarInput}
             placeholder="Search GitHub"
@@ -52,8 +54,8 @@ const SearchBarContainer: React.FC<any> = () => {
             type="submit"
             value="Search"
           />
-        </form>
-      </div>
+        </div>
+      </form>
       <p
         className={styles.proTips}
       >

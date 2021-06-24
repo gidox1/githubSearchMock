@@ -8,7 +8,9 @@ interface LinkData {
 }
 
 const Links = (props: LinkData) => (
-  <div>
+  <div
+    className={styles.linkDiv}
+  >
     {
       props.links.map((info, key) => (
         <a
@@ -31,14 +33,18 @@ const Footer: React.FC<any> = () => {
       >
         © 2021 GitHub, Inc.
       </span>
-      <Links
-        links={labelsLeft}
-      />
-      <Image
-        height={25}
-        src="/images/git.svg"
-        width={25}
-      />
+        <Links
+          links={labelsLeft}
+        />
+      <div
+        className={styles.footerImage}
+      >
+        <Image
+          height={25}
+          src="/images/git.svg"
+          width={25}
+        />
+      </div>
       <Links
        links={labelsRight}
       />

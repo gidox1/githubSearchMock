@@ -22,6 +22,7 @@
     border-radius: 5px;
     padding-left: 15px;
     width: 85%;
+    outline: none;
 }
 
 .searchBarInput::placeholder {
@@ -40,4 +41,30 @@
 
 .proTips {
     font-size: 14px;
+}
+
+@media (max-width: 920px) {
+    .searchBarInput {
+        width: 65%;
+    }
+
+    .headerLabel {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 540px) {
+    .barDiv {
+        display: flex;
+        flex-flow: column;
+    }
+    
+    .searchBarInput {
+        width: 100%;
+    }
+    .searchButton {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
 }

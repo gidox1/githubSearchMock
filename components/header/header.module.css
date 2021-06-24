@@ -98,18 +98,6 @@
 
 
 @media (max-width: 768px) {
-    .menu {
-        margin-top: 2%;
-        display: flex;
-        flex-flow: column;
-        cursor: pointer;
-        float: left;
-    }
-
-    .labels {
-        display: none;
-    }
-
     .authDiv {
         margin-left: 30%;
     }
@@ -143,5 +131,30 @@
     .logoContainer {
         margin-top: 1%;
     }
-
 }
+
+@media (max-width: 900px) {
+    .labels {
+        display: none;
+    }
+
+    .menu {
+        margin-top: 2%;
+        display: flex;
+        flex-flow: column;
+        cursor: pointer;
+        float: left;
+    }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .labels {
+        font-size: 13px;
+    }
+
+    .authBtn {
+        font-size: 13px;
+        width: 60px;
+    }
+}
+
