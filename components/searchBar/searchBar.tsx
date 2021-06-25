@@ -11,19 +11,19 @@ const SearchBarContainer: React.FC<any> = () => {
     register,
     handleSubmit,
   } = useForm();
+  const query = 'in:user&order=desc&page=1&per_page=10';
 
   const onSubmit = async (data) => {
-    // await axios.get<any>(`${config.apiBaseUrl}/search/users?q=${data.value}+in:user&order=desc&page=1&per_page=10`)
-    //   .then(async (response) => {
-    //     let data = JSON.stringify(await response.data);
-    //     console.log(data, "setting Datasetting Data")
-    //     if (typeof window !== "undefined") {
-    //       localStorage.setItem("data", data)
-    //     }
-    //     Router.push({
-    //       pathname: '/feeds',
-    //     })
-    //   });
+    await axios.get<any>(`${config.apiBaseUrl}/search/users?q=${data.value}+${query}`)
+      .then(async (response) => {
+        let data = JSON.stringify(await response.data);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("data", data)
+        }
+        Router.push({
+          pathname: '/feeds',
+        })
+      });
   };
 
   return (

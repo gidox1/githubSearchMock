@@ -7,32 +7,49 @@ interface profile {
 
 }
 
-const ProfileSection = (data) => ( 
-  <div> 
+const ProfileSection = (props) => ( 
+  
+  <div
+    className={styles.profileSec}
+  > 
     {
-  Array.isArray(data) && data.map((info, key) => {
-    <div>
-      <hr></hr>
-      <img
-        src={info.avatar_url}
-      />
-      <p>{info.login}</p>
-    </div>
-  })
+      Array.isArray(props.data) && props.data.length &&
+        props.data.map((info, key) => (
+          <div>
+            <div
+              className={styles.profileItems}
+            >
+              <img
+                src={info.avatar_url}
+                className={styles.avatar}
+              />
+              <p
+                className={styles.name_}
+              >
+                {info.login}
+              </p>
+            </div>
+            <hr className={styles._hr}></hr>
+          </div>
+        ))
     }
-</div>
-
+    {
+      (!props.data.length) && 
+        <div>
+          No data available
+        </div>
+    }
+  </div>
 )
 
-export default function Feeds(props) {
-  const [data, setData] = useState(null);
+export default function Feeds() {
+  const [data, setData] = useState(JSON.parse(localStorage.getItem("data")));
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setData(JSON.parse(localStorage.getItem("data")))
     }
   }, [])
-  console.log("setting Data", data)
 
   return (
     <Fragment>
@@ -46,9 +63,10 @@ export default function Feeds(props) {
           </div>
           <div className={styles.feeds}>
             <b className={styles.count}>
-              {data.total_count} users
+              {(data && data.total_count) ? data.total_count : 0} users
             </b>
             <ProfileSection
+              data={(data && data.items) ? data.items : []}
             />
           </div>
         </div>
