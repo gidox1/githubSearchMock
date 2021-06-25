@@ -4,3 +4,4 @@ Built with:
 - Nextjs
 - React
 - Typescript
+- GitHub API
