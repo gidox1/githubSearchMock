@@ -3,10 +3,6 @@ import NavBar from '../../components/header/header'
 import { NavBarProps } from '../home/Home'
 import styles from './feeds.module.css'
 
-interface profile {
-
-}
-
 const ProfileSection = (props) => ( 
   
   <div
@@ -18,18 +14,45 @@ const ProfileSection = (props) => (
           <div>
             <div
               className={styles.profileItems}
+              key={key}
             >
-              <img
-                src={info.avatar_url}
-                className={styles.avatar}
-              />
-              <p
-                className={styles.name_}
+              <div
+                className={styles.stack}
               >
-                {info.login}
-              </p>
+                <img
+                  src={info.avatar_url}
+                  className={styles.avatar}
+                />
+                <p
+                  className={styles.name_}
+                >
+                  <a
+                    href={info.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {info.login}
+                  </a>
+                </p>
+              </div>
+              <button
+                type="button"
+                className={styles.followBtn}
+              >
+                <a
+                  href={info.html_url}
+                  className={styles.a_}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  follow
+                </a>
+              </button>
             </div>
-            <hr className={styles._hr}></hr>
+            {
+              key < props.data.length - 1 &&
+                <hr className={styles._hr}></hr>
+            }
           </div>
         ))
     }
@@ -43,7 +66,7 @@ const ProfileSection = (props) => (
 )
 
 export default function Feeds() {
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("data")));
+  const [data, setData] = useState<any>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -63,10 +86,29 @@ export default function Feeds() {
           </div>
           <div className={styles.feeds}>
             <b className={styles.count}>
-              {(data && data.total_count) ? data.total_count : 0} users
+              {console.log(data, "data")}
+              {(data) ? data.total_count : 0} users
             </b>
             <ProfileSection
               data={(data && data.items) ? data.items : []}
+            />
+          </div>
+        </div>
+        <div
+          className={styles.btnDivDown}
+        >
+          <div
+            className={styles.btnDiv}
+          >
+            <input
+              type="button"
+              className={styles.nav}
+              value="previous"
+            />
+            <input
+              type="button"
+              className={styles.nav}
+              value="next"
             />
           </div>
         </div>

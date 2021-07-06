@@ -5,25 +5,19 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Router, { useRouter } from 'next/router'
 import config from '../../lib/config';
+import { getUsers } from '../../lib/action'
 
 const SearchBarContainer: React.FC<any> = () => {
   const {
     register,
     handleSubmit,
   } = useForm();
-  const query = 'in:user&order=desc&page=1&per_page=10';
 
   const onSubmit = async (data) => {
-    await axios.get<any>(`${config.apiBaseUrl}/search/users?q=${data.value}+${query}`)
-      .then(async (response) => {
-        let data = JSON.stringify(await response.data);
-        if (typeof window !== "undefined") {
-          localStorage.setItem("data", data)
-        }
-        Router.push({
-          pathname: '/feeds',
-        })
-      });
+    await getUsers(data);
+    Router.push({
+      pathname: '/feeds',
+    })
   };
 
   return (

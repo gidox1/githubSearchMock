@@ -8,7 +8,6 @@ interface data {
 const SideBar: React.FC<data> = (data) => {
     return (
         <div className={styles.container}>
-
         </div>
     )
 }
