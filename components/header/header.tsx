@@ -8,7 +8,7 @@ const NavBar = (
   props: InferProps<typeof NavBar.propTypes>
 ) => {
   const [active, setActive] = useState(false)
-console.log(active, "activeactive")
+
   return (
   <div className={styles.headerClass}>
     <div className={styles.innerHeading}>

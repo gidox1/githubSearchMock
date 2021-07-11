@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import NavBar from '../../components/header/header'
 import { NavBarProps } from '../home/Home'
 import styles from './feeds.module.css'
+import { getUsers } from '../../lib/action'
+import { useRouter } from 'next/router'
 
 const ProfileSection = (props) => ( 
   
@@ -65,8 +67,30 @@ const ProfileSection = (props) => (
   </div>
 )
 
-export default function Feeds() {
+export default function Feeds(props) {
+  const router = useRouter()
+  const query = {
+    value: router.query.data
+  };
+
   const [data, setData] = useState<any>([]);
+  const [pageCount, setPageCount] = useState<number>(1);
+
+  const handlePervious = async(e) => {
+    e.preventDefault();
+    let computed = (pageCount > 0) ? pageCount - 1 : pageCount;
+    const response = await getUsers(query, computed, false);
+    setPageCount(computed);
+    setData(response.data);
+  }
+
+  const handleNext = async(e) => {
+    e.preventDefault();
+    let computed = pageCount + 1;
+    const response = await getUsers(query, computed, false);
+    setPageCount(computed);
+    setData(response.data);
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -104,11 +128,13 @@ export default function Feeds() {
               type="button"
               className={styles.nav}
               value="previous"
+              onClick={(e) => handlePervious(e)}
             />
             <input
               type="button"
               className={styles.nav}
               value="next"
+              onClick={(e) => handleNext(e)}
             />
           </div>
         </div>

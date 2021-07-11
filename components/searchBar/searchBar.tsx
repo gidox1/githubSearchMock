@@ -14,9 +14,12 @@ const SearchBarContainer: React.FC<any> = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    await getUsers(data);
+    const page:number = 1;
+    await getUsers(data, page);
+
     Router.push({
       pathname: '/feeds',
+      query: {data: data.value}
     })
   };
 

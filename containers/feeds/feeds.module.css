@@ -63,6 +63,7 @@
 }
 .a_ {
     color: #24292E;
+    letter-spacing: 2px;
 }
 .nav {
     width: 10%;
@@ -74,4 +75,26 @@
     outline: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+    .name_{
+        margin-top: 35%;
+    }
+    .usersSection {
+        width: 100%
+    }
+    .avatar {
+        width: 90px;
+        height: 90px;
+    }
+    .nav{
+        width: 33%;
+    }
+    .btnDiv{
+        margin-top: 20%;
+    }
+    .followBtn{
+        margin-left: 25%;
+    }
 }
