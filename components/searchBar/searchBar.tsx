@@ -2,9 +2,7 @@ import styles from './searchBar.module.css'
 import React from 'react'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import Router, { useRouter } from 'next/router'
-import config from '../../lib/config';
+import Router from 'next/router'
 import { getUsers } from '../../lib/action'
 
 const SearchBarContainer: React.FC<any> = () => {

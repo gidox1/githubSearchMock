@@ -15,7 +15,7 @@ const Links = (props: LinkData) => (
       props.links.map((info, key) => (
         <a
           className={styles.aTags}
-          href="#"
+          href="https://github.com/"
           key={key}
         >
           {info}

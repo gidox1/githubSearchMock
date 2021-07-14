@@ -3,7 +3,7 @@ import NavBar from '../../components/header/header'
 import { NavBarProps } from '../home/Home'
 import styles from './feeds.module.css'
 import { getUsers } from '../../lib/action'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 
 const ProfileSection = (props) => ( 
   
@@ -92,6 +92,13 @@ export default function Feeds(props) {
     setData(response.data);
   }
 
+  const backToSearch = () => {
+    Router.push({
+      pathname: '/',
+      query: {data: data.value}
+    })
+  }
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setData(JSON.parse(localStorage.getItem("data")))
@@ -108,11 +115,30 @@ export default function Feeds(props) {
           <div className={styles.sidebarSec}>
 
           </div>
-          <div className={styles.feeds}>
-            <b className={styles.count}>
-              {console.log(data, "data")}
-              {(data) ? data.total_count : 0} users
-            </b>
+          <div
+            className={styles.feeds}
+          >
+            <div
+              className={styles.count}
+            >
+              <div>
+                <b>
+                  {console.log(data, "data")}
+                  {(data) ? data.total_count : 0} users
+                </b>
+              </div>
+              <div
+                className={styles.bckDiv}
+              >
+                <button
+                  type="button"
+                  className={styles.back_}
+                  onClick={backToSearch}
+                >
+                  Back to search
+                </button>
+              </div>
+            </div>
             <ProfileSection
               data={(data && data.items) ? data.items : []}
             />
@@ -124,12 +150,16 @@ export default function Feeds(props) {
           <div
             className={styles.btnDiv}
           >
-            <input
-              type="button"
-              className={styles.nav}
-              value="previous"
-              onClick={(e) => handlePervious(e)}
-            />
+            {
+              (pageCount > 1) && (
+                <input
+                  type="button"
+                  className={styles.nav}
+                  value="previous"
+                  onClick={(e) => handlePervious(e)}
+                />
+              )
+            }
             <input
               type="button"
               className={styles.nav}

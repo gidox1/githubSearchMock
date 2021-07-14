@@ -96,6 +96,9 @@
     opacity: 0;
 }
 
+.ghLogo {
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .authDiv {
