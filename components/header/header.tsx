@@ -3,11 +3,19 @@ import React, { useState } from 'react'
 import PropTypes, { InferProps } from 'prop-types'
 import Image from 'next/image'
 import { composeStrings } from '../../utils/utils'
+import Router, { useRouter } from 'next/router'
 
 const NavBar = (
   props: InferProps<typeof NavBar.propTypes>
 ) => {
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
+
+  //redirect to gitHub for header labels click
+  const handleGithubRedirect = () => {
+    Router.push({
+      pathname: 'https://github.com/',
+    })
+  }
 
   return (
   <div className={styles.headerClass}>
@@ -25,6 +33,7 @@ const NavBar = (
             <label
               className={styles.labels}
               key={key}
+              onClick={handleGithubRedirect}
             >
               {info}
             </label>
@@ -41,10 +50,13 @@ const NavBar = (
               styles.inactive
             )
         }
-        > Sign in
+        onClick={handleGithubRedirect}
+        > 
+          Sign in
         </button>
         <button
           className={styles.authBtn}
+          onClick={handleGithubRedirect}
         > Sign up
         </button>
       </div>
