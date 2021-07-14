@@ -6,7 +6,7 @@ import { getUsers } from '../../lib/action'
 import Router, { useRouter } from 'next/router'
 import ProfileSection from './profile';
 
-export default function Feeds(props) {
+export default function Feeds() {
   const router = useRouter()
   const query = {
     value: router.query.data
