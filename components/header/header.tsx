@@ -3,17 +3,23 @@ import React, { useState } from 'react'
 import PropTypes, { InferProps } from 'prop-types'
 import Image from 'next/image'
 import { composeStrings } from '../../utils/utils'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 
 const NavBar = (
   props: InferProps<typeof NavBar.propTypes>
 ) => {
   const [active, setActive] = useState(false);
-
   //redirect to gitHub for header labels click
   const handleGithubRedirect = () => {
     Router.push({
       pathname: 'https://github.com/',
+    })
+  }
+
+  //redirect back home
+  const backToHome = () => {
+    Router.push({
+      pathname: '/',
     })
   }
 
@@ -26,6 +32,8 @@ const NavBar = (
             height={50}
             src="/images/github.svg"
             width={100}
+            onClick={backToHome}
+            className={styles.ghLogo}
           />
         </div>
         {
